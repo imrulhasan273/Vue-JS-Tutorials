@@ -173,3 +173,104 @@ new Vue({
 ---
 
 ---
+
+# **Data Binding**
+
+---
+
+- How can pass a variable to `href` inside `index.html`?
+
+`index.html`
+
+```html
+<body>
+  <div id="vue-app">
+    <h1>Data Binding</h1>
+    <a v-bind:href="website">Portfolio</a>
+  </div>
+  <script src="app.js"></script>
+</body>
+```
+
+> Use `v-bind:href` instead of just `href` to bind with Vue data.
+
+`app.js`
+
+```js
+new Vue({
+  el: "#vue-app", //connects with a `div` inside index.html
+  data: {
+    name: "Imrul Hasan",
+    job: "Engineer",
+    website: "https://imrulhasan.me",
+  },
+  methods: {
+    greet: function (time) {
+      to = this.name;
+      return "Good " + time + " " + to;
+    },
+  },
+});
+```
+
+### Inspect
+
+![](markdowns/5.png)
+
+Another example
+
+`index.html`
+
+```html
+<input type="text" v-bind:value="name" />
+```
+
+- So `v-bind:` is used to bind data with different attributes.
+
+---
+
+## How to get full `tags` from **js** inside **index.html**?
+
+`index.html`
+
+```html
+<body>
+  <div id="vue-app">
+    <h1>Data Binding</h1>
+    <a v-bind:href="website">Portfolio</a>
+    <br />
+    <input type="text" v-bind:value="name" />
+    <br />
+    <p v-html="websiteTag"></p>
+  </div>
+  <script src="app.js"></script>
+</body>
+```
+
+- Here we bind with `v-html`.
+
+`app.js`
+
+```js
+new Vue({
+  el: "#vue-app", //connects with a `div` inside index.html
+  data: {
+    name: "Imrul Hasan",
+    job: "Engineer",
+    website: "https://imrulhasan.me",
+    websiteTag: '<a href="https://imrulhasan.me">Portfolio</a>',
+  },
+  methods: {
+    greet: function (time) {
+      to = this.name;
+      return "Good " + time + " " + to;
+    },
+  },
+});
+```
+
+## Outputs
+
+![](markdowns/6.png)
+
+---
