@@ -9,7 +9,14 @@
   </head>
   <body>
     <div id="vue-app">
-      <!--  -->
+      <h1>Events</h1>
+      <button v-on:click="add(1)">Add a year</button>
+      <button v-on:click="sub(1)">Substract a Yeat</button>
+      <button v-on:dblclick="add(10)">Add 10 year</button>
+      <button v-on:dblclick="sub(10)">Substract 10 Yeat</button>
+      <p>My age is {{ age }}</p>
+
+      <div id="canvas" @mousemove="updateXY">{{ x }} , {{ y }}</div>
     </div>
     <script src="app.js"></script>
   </body>

@@ -274,3 +274,184 @@ new Vue({
 ![](markdowns/6.png)
 
 ---
+
+# **Events**
+
+---
+
+## Increament / Substract age with click event
+
+`app.js`
+
+```js
+new Vue({
+  el: "#vue-app", //connects with a `div` inside index.html
+  data: {
+    age: 25,
+  },
+  methods: {
+    //
+  },
+});
+```
+
+`index.html`
+
+```html
+<body>
+  <div id="vue-app">
+    <h1>Events</h1>
+    <button v-on:click="age++">Add a year</button>
+    <button v-on:click="age--">Substract a Yeat</button>
+    <p>My age is {{ age }}</p>
+  </div>
+  <script src="app.js"></script>
+</body>
+```
+
+- here for click event we use `v-on:click` **directive** and inside `""` we pass the data with some operation.
+
+---
+
+## Increament / Substract age with click event using function
+
+`app.js`
+
+```js
+new Vue({
+  el: "#vue-app", //connects with a `div` inside index.html
+  data: {
+    age: 25,
+  },
+  methods: {
+    add: function () {
+      this.age++;
+    },
+    sub: function () {
+      this.age--;
+    },
+  },
+});
+```
+
+`index.html`
+
+```html
+<body>
+  <div id="vue-app">
+    <h1>Events</h1>
+    <button v-on:click="add">Add a year</button>
+    <button v-on:click="sub">Substract a Yeat</button>
+    <p>My age is {{ age }}</p>
+  </div>
+  <script src="app.js"></script>
+</body>
+```
+
+- here `add` and `sub` are functions name.
+- notice we don't need to add `()` after function name.
+
+---
+
+## **Double Click** event
+
+`app.js`
+
+```js
+new Vue({
+  el: "#vue-app", //connects with a `div` inside index.html
+  data: {
+    age: 25,
+  },
+  methods: {
+    add: function (inc) {
+      this.age += inc;
+    },
+    sub: function (dec) {
+      this.age -= dec;
+    },
+  },
+});
+```
+
+`index.html`
+
+```html
+<body>
+  <div id="vue-app">
+    <h1>Events</h1>
+    <button v-on:click="add(1)">Add a year</button>
+    <button v-on:click="sub(1)">Substract a Yeat</button>
+    <button v-on:dblclick="add(10)">Add 10 year</button>
+    <button v-on:dblclick="sub(10)">Substract 10 Yeat</button>
+    <p>My age is {{ age }}</p>
+  </div>
+  <script src="app.js"></script>
+</body>
+```
+
+- Here we pass value to paratameter using `functionName(param)`
+
+---
+
+## **Mouse Event** to view x,y axises on Screen
+
+`app.js`
+
+```js
+new Vue({
+  el: "#vue-app", //connects with a `div` inside index.html
+  data: {
+    x: 0,
+    y: 0,
+  },
+  methods: {
+    updateXY: function (event) {
+      // console.log(event);
+      this.x = event.offsetX;
+      this.y = event.offsetY;
+    },
+  },
+});
+```
+
+`styles.css`
+
+```css
+#canvas {
+  width: 600px;
+  padding: 200px 20px;
+  text-align: center;
+  border: 1px solid #333;
+}
+```
+
+`index.html`
+
+```html
+<body>
+  <div id="vue-app">
+    <h1>Events</h1>
+    <div id="canvas" v-on:mousemove="updateXY">{{ x }} , {{ y }}</div>
+  </div>
+  <script src="app.js"></script>
+</body>
+```
+
+### Output
+
+![](markdowns/7.png)
+
+---
+
+## Shothand
+
+- We don't need to use `v-on` all the time.
+- we can use `@` instead of `v-on:` to bind
+- example below
+
+```html
+<div id="canvas" @mousemove="updateXY">{{ x }} , {{ y }}</div>
+```
+
+---
