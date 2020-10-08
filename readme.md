@@ -1106,3 +1106,68 @@ Puncing
 ![](markdowns/20.png)
 
 ---
+
+# **Multiple Vue Instances**
+
+---
+
+`app.js`
+
+```js
+var one = new Vue({
+  el: "#vue-app-one",
+  data: {
+    title: "Vue App One",
+  },
+  computed: {
+    greet: function () {
+      return "Hello, from app one :)";
+    },
+  },
+});
+
+var two = new Vue({
+  el: "#vue-app-two",
+  data: {
+    title: "Vue App Two",
+  },
+  computed: {
+    greet: function () {
+      return "Yo dudes, this is app 2 speaking to ya";
+    },
+  },
+  methods: {
+    changeTitle: function () {
+      one.title = "Title Changed";
+    },
+  },
+});
+
+two.title = "Changed from outside";
+```
+
+`index.html`
+
+```html
+<body>
+  <h1>Multiple Vue instances</h1>
+  <div id="vue-app-one">
+    <h2>{{ title }}</h2>
+    <p>{{ greet }}</p>
+  </div>
+  <hr />
+  <div id="vue-app-two">
+    <h2>{{ title }}</h2>
+    <p>{{ greet }}</p>
+    <button v-on:click="changeTitle">Change App One Title</button>
+  </div>
+</body>
+```
+
+### Output
+
+![](markdowns/21.png)
+
+---
+
+---
