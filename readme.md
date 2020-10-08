@@ -582,3 +582,116 @@ new Vue({
 ```
 
 ---
+
+---
+
+# **Computed Properties**
+
+---
+
+- Git: **git checkout computed_property**
+
+---
+
+## Using Normal Methods
+
+`app.js`
+
+```js
+new Vue({
+  el: "#vue-app",
+  data: {
+    a: 0,
+    b: 0,
+    age: 20,
+  },
+  methods: {
+    addToA: function () {
+      console.log("addToA");
+      return this.a + this.age;
+    },
+    addToB: function () {
+      console.log("addToB");
+      return this.b + this.age;
+    },
+  },
+});
+```
+
+`index.html`
+
+```html
+<body>
+  <div id="vue-app">
+    <h1>Computed Properties</h1>
+    <button v-on:click="a++">Add to A</button>
+    <button v-on:click="b++">Add to B</button>
+    <p>A - {{ a }}</p>
+    <p>B - {{ b }}</p>
+    <p>Age + A = {{ addToA() }}</p>
+    <p>Age + B = {{ addToB() }}</p>
+  </div>
+</body>
+```
+
+### Output
+
+![](markdowns/8.png)
+
+### Problem:
+
+- Every time we change A or B, both `addToA()` and `addToB()` function calls. Which is enefficient.
+
+### Solution? -> computed
+
+---
+
+## Using Computed
+
+`app.js`
+
+```js
+new Vue({
+  el: "#vue-app",
+  data: {
+    a: 0,
+    b: 0,
+    age: 20,
+  },
+
+  computed: {
+    addToA: function () {
+      console.log("addToA");
+      return this.a + this.age;
+    },
+    addToB: function () {
+      console.log("addToB");
+      return this.b + this.age;
+    },
+  },
+});
+```
+
+`index.html`
+
+```html
+<body>
+  <div id="vue-app">
+    <h1>Computed Properties</h1>
+    <button v-on:click="a++">Add to A</button>
+    <button v-on:click="b++">Add to B</button>
+    <p>A - {{ a }}</p>
+    <p>B - {{ b }}</p>
+    <p>Age + A = {{ addToA }}</p>
+    <p>Age + B = {{ addToB }}</p>
+  </div>
+</body>
+```
+
+### Output
+
+![](markdowns/8.png)
+
+---
+
+---
