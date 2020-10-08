@@ -695,3 +695,145 @@ new Vue({
 ---
 
 ---
+
+# **Dynamic CSS**
+
+---
+
+## Example 1
+
+`styles.css`
+
+```css
+span {
+  background: red;
+  display: inline-block;
+  padding: 10px;
+  color: #fff;
+  margin: 10px 0;
+}
+
+.available span {
+  background: green;
+}
+```
+
+`app.js`
+
+```js
+new Vue({
+  el: "#vue-app",
+  data: {
+    available: false,
+  },
+  methods: {},
+  computed: {},
+});
+```
+
+`index.html`
+
+```html
+<body>
+  <div id="vue-app">
+    <h1>Dynamic CSS</h1>
+    <h2>Example 1</h2>
+    <div
+      v-on:click="available = !available"
+      v-bind:class="{available: available}"
+    >
+      <span>Ryu</span>
+    </div>
+  </div>
+</body>
+```
+
+- here `v-bind:class="{className: variableName}"`,
+
+### Output
+
+Case 1:
+
+![](markdowns/11.png)
+
+Case 2: When CLick on **Ryu**
+
+![](markdowns/10.png)
+
+---
+
+## Example 2 [Recommanded Way]
+
+`styles.css`
+
+```css
+span {
+  background: red;
+  display: inline-block;
+  padding: 10px;
+  color: #fff;
+  margin: 10px 0;
+}
+
+.available span {
+  background: green;
+}
+
+.nearby span:after {
+  content: "nearby";
+  margin-left: 10px;
+}
+```
+
+`app.js`
+
+```js
+new Vue({
+  el: "#vue-app",
+  data: {
+    available: false,
+    nearby: false,
+  },
+  methods: {},
+  computed: {
+    compClasses: function () {
+      return {
+        available: this.available, //will return if true
+        nearby: this.nearby, //will return if true
+      };
+    },
+  },
+});
+```
+
+`index.html`
+
+```html
+<body>
+  <div id="vue-app">
+    <h1>Dynamic CSS</h1>
+    <h2>Example 2</h2>
+    <button v-on:click="nearby = !nearby">Toggle nearby</button>
+    <button v-on:click="available = !available">Toggle available</button>
+    <div v-bind:class="compClasses">
+      <span>Ryu</span>
+    </div>
+  </div>
+</body>
+```
+
+- Here on `compClasses` there will be the objects if they are true. These object defined in `compClasses` computed in `app.js`
+
+### Output
+
+Case 1:
+
+![](markdowns/12.png)
+
+Case 2: Click on both button
+
+![](markdowns/13.png)
+
+---
+
+---
