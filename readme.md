@@ -455,3 +455,83 @@ new Vue({
 ```
 
 ---
+
+---
+
+# **Event Modifier**
+
+---
+
+## Once Modifier
+
+`index.html`
+
+`app.js`
+
+```js
+new Vue({
+  el: "#vue-app",
+  data: {
+    age: 25,
+  },
+  methods: {
+    add: function (inc) {
+      this.age += inc;
+    },
+  },
+});
+```
+
+```html
+<body>
+  <div id="vue-app">
+    <h1>Event Modifiers</h1>
+    <button v-on:click.once="add(1)">Event Modifier: Once</button>
+    <p>My age is {{ age }}</p>
+  </div>
+  <script src="app.js"></script>
+</body>
+```
+
+- So age will increments once
+
+---
+
+## Prevent Modifier
+
+`app.js`
+
+```js
+new Vue({
+  el: "#vue-app",
+  data: {
+    age: 25,
+  },
+  methods: {
+    add: function (inc) {
+      this.age += inc;
+    },
+    click: function () {
+      alert("You Click Me");
+    },
+  },
+});
+```
+
+`index.html`
+
+```html
+<body>
+  <div id="vue-app">
+    <h1>Event Modifiers</h1>
+    <button v-on:click.once="add(1)">Event Modifier: Once</button>
+    <p>My age is {{ age }}</p>
+    <a v-on:click.prevent="click" href="https://www.imrulhasan.me">Portfolio</a>
+  </div>
+  <script src="app.js"></script>
+</body>
+```
+
+- Now although we click on link. But It prevents to go to the `href` using `v-on:click.prevent`
+
+---

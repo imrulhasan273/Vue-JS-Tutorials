@@ -9,7 +9,12 @@
   </head>
   <body>
     <div id="vue-app">
-      <!--  -->
+      <h1>Event Modifiers</h1>
+      <button v-on:click.once="add(1)">Event Modifier: Once</button>
+      <p>My age is {{ age }}</p>
+      <a v-on:click.prevent="click" href="https://www.imrulhasan.me"
+        >Portfolio</a
+      >
     </div>
     <script src="app.js"></script>
   </body>
