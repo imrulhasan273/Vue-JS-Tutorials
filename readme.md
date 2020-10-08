@@ -535,3 +535,50 @@ new Vue({
 - Now although we click on link. But It prevents to go to the `href` using `v-on:click.prevent`
 
 ---
+
+---
+
+# **Keyboard Events**
+
+---
+
+`app.js`
+
+```js
+new Vue({
+  el: "#vue-app",
+  data: {
+    name: "",
+    age: "",
+  },
+  methods: {
+    logName: function () {
+      console.log("you entered your name");
+    },
+    logAge: function () {
+      console.log("you entered your age");
+    },
+  },
+});
+```
+
+`index.html`
+
+```html
+<body>
+  <div id="vue-app">
+    <h1>Keyboard Events</h1>
+    <label>Name:</label>
+    <input type="text" v-on:keyup.enter="logName" v-model="name" />
+    <span>{{ name }}</span>
+    <br />
+    <br />
+    <label>Age:</label>
+    <input type="text" v-on:keyup.alt.enter="logAge" v-model="age" />
+    <span>{{ age }}</span>
+  </div>
+  <script src="app.js"></script>
+</body>
+```
+
+---
