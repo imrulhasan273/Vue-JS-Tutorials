@@ -700,6 +700,8 @@ new Vue({
 
 ---
 
+- Git: **git checkout dyamic_css**
+
 ## Example 1
 
 `styles.css`
