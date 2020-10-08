@@ -841,3 +841,59 @@ Case 2: Click on both button
 ---
 
 ---
+
+# **Conditionals**
+
+---
+
+- Git: **git checkout conditionals**
+
+`app.js`
+
+```js
+new Vue({
+  el: "#vue-app",
+  data: {
+    error: false,
+    success: false,
+  },
+  methods: {},
+  computed: {},
+});
+```
+
+`index.html`
+
+```html
+<body>
+  <div id="vue-app">
+    <h1>Conditionals</h1>
+    <button v-on:click="error = !error">Toggle Error</button>
+    <button v-on:click="success = !success">Toggle Success</button>
+    <p v-if="error" class="error">There has been an error</p>
+    <p v-else-if="success" class="success">Whooo, success :)</p>
+  </div>
+</body>
+```
+
+---
+
+`index.html`
+
+```html
+<body>
+  <div id="vue-app">
+    <h1>Conditionals</h1>
+    <button v-on:click="error = !error">Toggle Error</button>
+    <button v-on:click="success = !success">Toggle Success</button>
+    <p v-show="error" class="error">There has been an error</p>
+    <p v-show="success" class="success">Whooo, success :)</p>
+  </div>
+</body>
+```
+
+- `v-show` is based on `display: none`. So the content will not deleted from `elements inspect`.
+
+---
+
+---

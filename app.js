@@ -1,5 +1,9 @@
 new Vue({
   el: "#vue-app",
-  data: {},
+  data: {
+    error: false,
+    success: false,
+  },
   methods: {},
+  computed: {},
 });
