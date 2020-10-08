@@ -1224,3 +1224,39 @@ new Vue({
 ---
 
 ---
+
+# **Refs**
+
+---
+
+`app.js`
+
+```js
+new Vue({
+  el: "#vue-app-one",
+  data: {
+    output: "Your favourite food",
+  },
+  methods: {
+    readRefs: function () {
+      console.log(this.$refs);
+      this.output = this.$refs.input2.value;
+    },
+  },
+});
+```
+
+`index.html`
+
+```html
+<body>
+  <h1>Refs</h1>
+  <div id="vue-app-one">
+    <input type="text" ref="input" />
+    <button v-on:click="readRefs">Submit</button>
+    <p>{{ output }}</p>
+  </div>
+</body>
+```
+
+---
