@@ -15,11 +15,6 @@ Vue.component("greeting", {
   },
 });
 
-/* new Vue({
-    el: '.test',
-    template: '<p>I am a template</p>'
-}); */
-
 new Vue({
   el: "#vue-app-one",
 });

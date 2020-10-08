@@ -1171,3 +1171,54 @@ two.title = "Changed from outside";
 ---
 
 ---
+
+# **Components**
+
+---
+
+`app.js`
+
+```js
+Vue.component("greeting", {
+  template:
+    "<p>re-usable component. {{name}}. <button v-on:click='changeName'>Change Name</button> </p>",
+
+  data: function () {
+    return {
+      name: "Imrul",
+    };
+  },
+
+  methods: {
+    changeName: function () {
+      this.name = "Hasan";
+    },
+  },
+});
+
+new Vue({
+  el: "#vue-app-one",
+});
+
+new Vue({
+  el: "#vue-app-two",
+});
+```
+
+`index.html`
+
+```html
+<body>
+  <h1>Templates</h1>
+  <div id="vue-app-one">
+    <h1>Vue App One</h1>
+    <greeting></greeting>
+  </div>
+  <div id="vue-app-two">
+    <h1>Vue App Two</h1>
+    <greeting></greeting>
+  </div>
+</body>
+```
+
+---
