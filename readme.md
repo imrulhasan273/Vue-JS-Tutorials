@@ -899,3 +899,111 @@ new Vue({
 ---
 
 ---
+
+# **Looping with v-for**
+
+---
+
+- Git: **git checkout for_loop**
+
+`app.js`
+
+```js
+new Vue({
+  el: "#vue-app",
+  data: {
+    characters: ["Mario", "Luigi", "Yoshi", "Bowser"],
+    ninjas: [
+      { name: "Ryu", age: 25 },
+      { name: "Yoshi", age: 35 },
+      { name: "Ken", age: 55 },
+    ],
+  },
+  methods: {},
+  computed: {},
+});
+```
+
+### Way 1:
+
+`index.html`
+
+```html
+<body>
+  <div id="vue-app">
+    <h1>Looping through lists</h1>
+    <ul>
+      <li v-for="character in characters">{{ character }}</li>
+    </ul>
+  </div>
+</body>
+```
+
+## Output
+
+![](markdowns/14.png)
+
+### Way 2:
+
+`index.html`
+
+```html
+<body>
+  <div id="vue-app">
+    <h1>Looping through lists</h1>
+    <ul>
+      <li v-for="(ninja, index) in ninjas">
+        {{ index }} . {{ ninja.name }} - {{ ninja.age }}
+      </li>
+    </ul>
+  </div>
+</body>
+```
+
+## Output
+
+![](markdowns/15.png)
+
+### Way 3:
+
+`index.html`
+
+```html
+<body>
+  <div id="vue-app">
+    <h1>Looping through lists</h1>
+    <div v-for="(ninja, index) in ninjas">
+      <h3>{{ index }} . {{ ninja.name }}</h3>
+      <p>Age - {{ ninja.age }}</p>
+    </div>
+  </div>
+</body>
+```
+
+## Output
+
+![](markdowns/16.png)
+
+### Way 4:
+
+`index.html`
+
+```html
+<body>
+  <div id="vue-app">
+    <h1>Looping through lists</h1>
+    <template v-for="ninja in ninjas">
+      <div v-for="(val, key) in ninja">
+        <p>{{key}} - {{ val }}</p>
+      </div>
+      <hr />
+    </template>
+  </div>
+</body>
+```
+
+## Output
+
+![](markdowns/17.png)
+
+---
